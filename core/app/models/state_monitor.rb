@@ -1,5 +1,5 @@
 class StateMonitor < ActiveRecord::Observer
-  observe :order, :shipment
+  observe :order, :shipment, :product
 
   # Generic transition callback *after* the transition is performed
   def after_transition(object, transition)

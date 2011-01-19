@@ -23,6 +23,17 @@ class Admin::ImagesController < Admin::BaseController
       render :text => ""
     end
   end
+  
+  def update_positions
+    params[:positions].each do |id, index|
+      Image.update_all(['position=?', index], ['id=?', id])
+    end
+
+    respond_to do |format|
+      format.html { redirect_to admin_product_images_url(params[:product_id]) }
+      format.js  { render :text => 'Ok' }
+    end
+  end
 
   private
 
